@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDF Toolkit</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <span class="icon">📄</span> PDF<span class="highlight">Toolkit</span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Tools</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </header>
+
+  <section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Simplify Your PDFs.</h1>
+    <p class="hero-subtitle">
+      Merge, split, and compress your PDF files instantly with just a few clicks.
+    </p>
+    <a href="#pdf-tools" class="hero-btn">Get Started</a>
+  </div>
+</section>
+
+<!-- Placeholder for PDF Tools Section -->
+<section id="pdf-tools" style="padding: 3rem; text-align: center;">
+  <h2>PDF Editing Section</h2>
+  <p>Tools to upload and process your PDF files will appear here.</p>
+</section>
+
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('nav-active');
+    });
+  </script>
+</body>
+</html>
