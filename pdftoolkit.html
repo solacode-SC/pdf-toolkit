@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDF Toolkit - Editor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f2f4f8;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #1e1e2f;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      animation: slideDown 1s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #00bcd4;
+    }
+
+    .home-link {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: opacity 0.3s ease;
+    }
+
+    .home-link:hover {
+      opacity: 0.7;
+    }
+
+    main {
+      display: flex;
+      height: calc(100vh - 70px);
+    }
+
+    .sidebar {
+      width: 250px;
+      background: #fff;
+      border-right: 1px solid #ddd;
+      padding: 1rem;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+      animation: fadeIn 1s ease-out;
+    }
+
+    .sidebar h3 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      color: #444;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar li {
+      margin-bottom: 0.75rem;
+      padding: 0.5rem 0.75rem;
+      background: #f9f9f9;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar li:hover {
+      background: #00bcd4;
+      color: white;
+      transform: translateX(5px);
+    }
+
+    .workspace {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    .pdf-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .pdf-item {
+      background: white;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .pdf-item button {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #ff5f5f;
+      border: none;
+      border-radius: 4px;
+      padding: 0.3rem 0.5rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    .upload-area, .edit-btn {
+      padding: 1rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .upload-area {
+      background: #00bcd4;
+      color: white;
+    }
+
+    .upload-area:hover {
+      background: #0097a7;
+    }
+
+    .edit-btn {
+      background: #4caf50;
+      color: white;
+    }
+
+    .edit-btn:hover {
+      background: #388e3c;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">PDF Toolkit</div>
+    <a class="home-link" href="index.html">← Back to Home</a>
+  </header>
+
+  <main>
+    <aside class="sidebar">
+      <h3>Tools</h3>
+      <ul>
+        <li>Merge PDFs</li>
+        <li>Custom Split</li>
+        <li>Resume Builder</li>
+        <li>PDF → QCM</li>
+        <li>PDF → Exam</li>
+      </ul>
+    </aside>
+
+    <section class="workspace">
+      <div class="pdf-list" id="pdfList">
+        <!-- Uploaded PDFs will be displayed here -->
+      </div>
+      <div>
+        <button class="upload-area" onclick="uploadPDF()">Upload PDFs</button>
+        <button class="edit-btn" onclick="startEditing()">Start Editing</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const pdfList = document.getElementById('pdfList');
+
+    function uploadPDF() {
+      const name = prompt("Enter PDF name:");
+      if (name) {
+        const item = document.createElement('div');
+        item.className = 'pdf-item';
+        item.innerHTML = `
+          <strong>${name}</strong>
+          <button onclick="removePDF(this)">X</button>
+        `;
+        pdfList.appendChild(item);
+      }
+    }
+
+    function removePDF(button) {
+      button.parentElement.remove();
+    }
+
+    function startEditing() {
+      alert("Editing started. (Functionality not implemented yet)");
+    }
+  </script>
+</body>
+</html>
