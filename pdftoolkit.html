@@ -5,159 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PDF Toolkit - Editor</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pdf-style.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-      background: #f2f4f8;
-      color: #333;
-      overflow-x: hidden;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: #1e1e2f;
-      color: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      animation: slideDown 1s ease-out;
-    }
-
-    @keyframes slideDown {
-      from { transform: translateY(-100%); }
-      to { transform: translateY(0); }
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #00bcd4;
-    }
-
-    .home-link {
-      color: white;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: opacity 0.3s ease;
-    }
-
-    .home-link:hover {
-      opacity: 0.7;
-    }
-
-    main {
-      display: flex;
-      height: calc(100vh - 70px);
-    }
-
-    .sidebar {
-      width: 250px;
-      background: #fff;
-      border-right: 1px solid #ddd;
-      padding: 1rem;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.05);
-      animation: fadeIn 1s ease-out;
-    }
-
-    .sidebar h3 {
-      margin-bottom: 1rem;
-      font-size: 1.2rem;
-      color: #444;
-    }
-
-    .sidebar ul {
-      list-style: none;
-    }
-
-    .sidebar li {
-      margin-bottom: 0.75rem;
-      padding: 0.5rem 0.75rem;
-      background: #f9f9f9;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .sidebar li:hover {
-      background: #00bcd4;
-      color: white;
-      transform: translateX(5px);
-    }
-
-    .workspace {
-      flex: 1;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      animation: fadeIn 1.2s ease-out;
-    }
-
-    .pdf-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .pdf-item {
-      background: white;
-      padding: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      position: relative;
-    }
-
-    .pdf-item button {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      background: #ff5f5f;
-      border: none;
-      border-radius: 4px;
-      padding: 0.3rem 0.5rem;
-      color: white;
-      cursor: pointer;
-    }
-
-    .upload-area, .edit-btn {
-      padding: 1rem 1.5rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      font-size: 1rem;
-    }
-
-    .upload-area {
-      background: #00bcd4;
-      color: white;
-    }
-
-    .upload-area:hover {
-      background: #0097a7;
-    }
-
-    .edit-btn {
-      background: #4caf50;
-      color: white;
-    }
-
-    .edit-btn:hover {
-      background: #388e3c;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    
   </style>
 </head>
 <body>
@@ -167,16 +17,42 @@
   </header>
 
   <main>
-    <aside class="sidebar">
-      <h3>Tools</h3>
-      <ul>
-        <li>Merge PDFs</li>
-        <li>Custom Split</li>
-        <li>Resume Builder</li>
-        <li>PDF → QCM</li>
-        <li>PDF → Exam</li>
-      </ul>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3>Tools</h3>
+        <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">
+          <span class="toggle-icon">◀</span>
+        </button>
+      </div>
+      
+      <div class="sidebar-content">
+        <div class="sidebar-section">
+          <h4>Tools</h4>
+          <ul>
+            <li>Merge PDFs</li>
+            <li>Custom Split</li>
+            <li>Resume Builder</li>
+            <li>PDF → QCM</li>
+            <li>PDF → Exam</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h4>Downloaded PDFs</h4>
+          <div class="downloaded-pdfs" id="downloadedPdfs">
+            <!-- Downloaded PDFs will be displayed here -->
+            <div class="no-pdfs-message">No downloaded PDFs yet</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="sidebar-resizer" id="sidebarResizer"></div>
     </aside>
+
+    <button class="show-sidebar-btn" id="showSidebarBtn" onclick="showSidebar()" style="display: none;">
+      <span class="show-icon">▶</span>
+      <span class="show-text">Show Tools</span>
+    </button>
 
     <section class="workspace">
       <div class="pdf-list" id="pdfList">
@@ -189,28 +65,239 @@
     </section>
   </main>
 
-  <script>
-    const pdfList = document.getElementById('pdfList');
 
-    function uploadPDF() {
-      const name = prompt("Enter PDF name:");
-      if (name) {
-        const item = document.createElement('div');
-        item.className = 'pdf-item';
-        item.innerHTML = `
-          <strong>${name}</strong>
-          <button onclick="removePDF(this)">X</button>
-        `;
-        pdfList.appendChild(item);
+
+  <script src="script.js"></script>
+  <script>
+    // Sidebar toggle functionality
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const toggleBtn = document.getElementById('sidebarToggle');
+      const toggleIcon = toggleBtn.querySelector('.toggle-icon');
+      const showBtn = document.getElementById('showSidebarBtn');
+      
+      sidebar.classList.toggle('sidebar-hidden');
+      
+      if (sidebar.classList.contains('sidebar-hidden')) {
+        toggleIcon.textContent = '▶';
+        toggleIcon.style.transform = 'rotate(0deg)';
+        showBtn.style.display = 'flex';
+      } else {
+        toggleIcon.textContent = '◀';
+        toggleIcon.style.transform = 'rotate(0deg)';
+        showBtn.style.display = 'none';
       }
     }
 
-    function removePDF(button) {
-      button.parentElement.remove();
+    function showSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const toggleBtn = document.getElementById('sidebarToggle');
+      const toggleIcon = toggleBtn.querySelector('.toggle-icon');
+      const showBtn = document.getElementById('showSidebarBtn');
+      
+      sidebar.classList.remove('sidebar-hidden');
+      toggleIcon.textContent = '◀';
+      toggleIcon.style.transform = 'rotate(0deg)';
+      showBtn.style.display = 'none';
     }
 
-    function startEditing() {
-      alert("Editing started. (Functionality not implemented yet)");
+    // Sidebar resizer functionality
+    function initSidebarResizer() {
+      const sidebar = document.getElementById('sidebar');
+      const resizer = document.getElementById('sidebarResizer');
+      
+      let isResizing = false;
+      let startX, startWidth;
+
+      function startResize(e) {
+        isResizing = true;
+        startX = e.clientX;
+        startWidth = parseInt(getComputedStyle(sidebar).width, 10);
+        
+        resizer.classList.add('resizing');
+        document.body.style.cursor = 'col-resize';
+        document.body.style.userSelect = 'none';
+      }
+
+      function resize(e) {
+        if (!isResizing) return;
+        
+        const deltaX = e.clientX - startX;
+        const newWidth = startWidth + deltaX;
+        const maxWidth = window.innerWidth * 0.4; // 40% of viewport width
+        const minWidth = 200;
+        
+        // Constrain width between min and max
+        const constrainedWidth = Math.max(minWidth, Math.min(newWidth, maxWidth));
+        
+        sidebar.style.width = constrainedWidth + 'px';
+      }
+
+      function stopResize() {
+        isResizing = false;
+        resizer.classList.remove('resizing');
+        document.body.style.cursor = '';
+        document.body.style.userSelect = '';
+      }
+
+      // Event listeners
+      resizer.addEventListener('mousedown', startResize);
+      document.addEventListener('mousemove', resize);
+      document.addEventListener('mouseup', stopResize);
+      
+      // Prevent text selection while resizing
+      resizer.addEventListener('selectstart', (e) => e.preventDefault());
+    }
+
+    // Initialize resizer when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      initSidebarResizer();
+    });
+
+    // Function to add a downloaded PDF to the sidebar
+    function addDownloadedPDF(name, size, date, pdfData = null) {
+      const downloadedPdfs = document.getElementById('downloadedPdfs');
+      const noPdfsMessage = downloadedPdfs.querySelector('.no-pdfs-message');
+      
+      // Remove the "no PDFs" message if it exists
+      if (noPdfsMessage) {
+        noPdfsMessage.remove();
+      }
+      
+      const pdfItem = document.createElement('div');
+      pdfItem.className = 'sidebar-pdf-item';
+      pdfItem.innerHTML = `
+        <div class="pdf-name">${name}</div>
+        <div class="pdf-info">
+          <span class="pdf-size">${size}</span>
+          <span class="pdf-date">${date}</span>
+        </div>
+        <div class="pdf-actions">
+          <button class="download-pdf" onclick="downloadPDF('${name}', this)" title="Download PDF">⬇</button>
+          <button class="remove-pdf" onclick="removeDownloadedPDF(this)" title="Remove">×</button>
+        </div>
+      `;
+      
+      // Store PDF data if provided
+      if (pdfData) {
+        pdfItem.setAttribute('data-pdf', JSON.stringify(pdfData));
+      }
+      
+      downloadedPdfs.appendChild(pdfItem);
+    }
+
+    // Function to download a PDF
+    function downloadPDF(filename, button) {
+      const pdfItem = button.closest('.sidebar-pdf-item');
+      const pdfData = pdfItem.getAttribute('data-pdf');
+      
+      if (pdfData) {
+        // If we have stored PDF data, use it
+        const data = JSON.parse(pdfData);
+        downloadFile(data.blob, filename);
+      } else {
+        // For demo purposes, create a sample PDF or trigger file download
+        createSamplePDF(filename);
+      }
+    }
+
+    // Function to create and download a file
+    function downloadFile(blob, filename) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Function to create a sample PDF for demo purposes
+    function createSamplePDF(filename) {
+      // Create a simple text-based PDF content
+      const pdfContent = `%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 4 0 R
+>>
+endobj
+
+4 0 obj
+<<
+/Length 44
+>>
+stream
+BT
+/F1 12 Tf
+72 720 Td
+(This is a sample PDF file) Tj
+ET
+endstream
+endobj
+
+xref
+0 5
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000204 00000 n 
+trailer
+<<
+/Size 5
+/Root 1 0 R
+>>
+startxref
+297
+%%EOF`;
+
+      const blob = new Blob([pdfContent], { type: 'application/pdf' });
+      downloadFile(blob, filename);
+    }
+
+    // Function to remove a downloaded PDF from the sidebar
+    function removeDownloadedPDF(button) {
+      const pdfItem = button.closest('.sidebar-pdf-item');
+      const downloadedPdfs = document.getElementById('downloadedPdfs');
+      
+      pdfItem.remove();
+      
+      // If no PDFs left, show the "no PDFs" message
+      if (downloadedPdfs.children.length === 0) {
+        const noPdfsMessage = document.createElement('div');
+        noPdfsMessage.className = 'no-pdfs-message';
+        noPdfsMessage.textContent = 'No downloaded PDFs yet';
+        downloadedPdfs.appendChild(noPdfsMessage);
+      }
+    }
+
+    // Example function to simulate adding a downloaded PDF (for testing)
+    function simulateDownload() {
+      const names = ['document.pdf', 'report.pdf', 'presentation.pdf', 'contract.pdf'];
+      const sizes = ['2.3 MB', '1.8 MB', '4.1 MB', '3.2 MB'];
+      const dates = ['Today', 'Yesterday', '2 days ago', '1 week ago'];
+      
+      const randomIndex = Math.floor(Math.random() * names.length);
+      addDownloadedPDF(names[randomIndex], sizes[randomIndex], dates[randomIndex]);
     }
   </script>
 </body>
