@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDF Toolkit</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <span class="icon">📄</span> PDF<span class="highlight">Toolkit</span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Tools</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </header>
+
+  <section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Simplify Your PDFs.</h1>
+    <p class="hero-subtitle">
+      Merge, split, and compress your PDF files instantly with just a few clicks.
+    </p>
+    <a href="pdftoolkit.html" class="hero-btn">Get Started</a>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <h2 class="section-title">What Can PDF Toolkit Do?</h2>
+  <p class="section-subtitle">Explore the powerful tools we offer to supercharge your documents.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📎</div>
+      <h3>Merge PDFs</h3>
+      <p>Combine multiple PDF files into one organized document effortlessly.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">✂️</div>
+      <h3>Custom Split</h3>
+      <p>Extract selected pages or split by range from large PDF files.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">📄</div>
+      <h3>Resume (Summarize)</h3>
+      <p>Auto-generate a concise summary of your PDF content using smart AI.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🧪</div>
+      <h3>PDF ➜ QCM/Exam</h3>
+      <p>Convert learning materials into quiz format for exam prep or assessments.</p>
+    </div>
+  </div>
+</section>
+
+<section class="other-tools" id="other-tools">
+  <h2 class="section-title">Our Other Awesome Tools</h2>
+  <p class="section-subtitle">Explore more utilities created to boost your productivity and creativity.</p>
+
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="tool-icon">🎥</div>
+      <h3>Social Media Downloader</h3>
+      <p>Download videos from Twitter, Instagram, and other platforms effortlessly.</p>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon">🎙</div>
+      <h3>Voice Note</h3>
+      <p>Record quick audio notes in your browser and save them for later use.</p>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon">🎨</div>
+      <h3>Image Editing</h3>
+      <p>Crop, filter, and beautify your images with our easy-to-use editor.</p>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon">💬</div>
+      <h3>Encrypted Group Chat</h3>
+      <p>Secure messaging app with end-to-end encryption and real-time sync.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="contact" id="contact">
+  <h2 class="section-title">Contact Us</h2>
+  <p class="section-subtitle">Have a question or feedback? We'd love to hear from you!</p>
+
+  <form class="contact-form" onsubmit="handleContact(event)">
+    <input type="text" placeholder="Your Name" required />
+    <input type="email" placeholder="Your Email" required />
+    <textarea rows="5" placeholder="Your Message..." required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+
+  <p class="contact-status" id="contact-status"></p>
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-logo">PDF Toolkit</div>
+    
+    <ul class="footer-links">
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Terms</a></li>
+    </ul>
+
+    <p class="footer-contact">📩 contact@pdftoolkit.com</p>
+
+    <p class="footer-copy">© 2025 PDF Toolkit. All rights reserved.</p>
+  </div>
+</footer>
+
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('nav-active');
+    });
+  </script>
+
+  <script>
+  function handleContact(e) {
+    e.preventDefault();
+    document.getElementById("contact-status").textContent = "✅ Your message has been sent!";
+    setTimeout(() => {
+      document.querySelector(".contact-form").reset();
+      document.getElementById("contact-status").textContent = "";
+    }, 3000);
+  }
+</script>
+
+</body>
+</html>

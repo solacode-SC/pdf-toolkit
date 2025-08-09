@@ -1,149 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PDF Toolkit</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoladeepTools - SDT | Your Ultimate Tool Collection</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+       
+    </style>
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">
-      <span class="icon">📄</span> PDF<span class="highlight">Toolkit</span>
-    </div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Tools</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-    </nav>
-    <div class="hamburger" id="hamburger">&#9776;</div>
-  </header>
+    <!-- ========== HEADER SECTION ========== -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <!-- Logo -->
+            <div class="logo">
+                SoladeepTools - SDT
+            </div>
 
-  <section class="hero">
-  <div class="hero-content">
-    <h1 class="hero-title">Simplify Your PDFs.</h1>
-    <p class="hero-subtitle">
-      Merge, split, and compress your PDF files instantly with just a few clicks.
-    </p>
-    <a href="pdftoolkit.html" class="hero-btn">Get Started</a>
-  </div>
-</section>
+            <!-- Navigation Menu -->
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#trends" class="nav-link">Trends</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#tools" class="nav-link">Topics</a>
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-item">Web Development</a>
+                        <a href="#" class="dropdown-item">Data Analytics</a>
+                        <a href="#" class="dropdown-item">AI & Machine Learning</a>
+                        <a href="#" class="dropdown-item">Design Tools</a>
+                        <a href="#" class="dropdown-item">Productivity</a>
+                        <a href="#" class="dropdown-item">Security Tools</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#signin" class="sign-in-btn">Sign In</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-<section class="features" id="features">
-  <h2 class="section-title">What Can PDF Toolkit Do?</h2>
-  <p class="section-subtitle">Explore the powerful tools we offer to supercharge your documents.</p>
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero" id="hero">
+        <!-- Floating Tool Cards Background Animation -->
+        <div class="floating-cards">
+            <div class="tool-card">🎨 Design Studio</div>
+            <div class="tool-card">📊 Analytics Pro</div>
+            <div class="tool-card">🚀 Deploy Fast</div>
+            <div class="tool-card">🔧 Code Helper</div>
+            <div class="tool-card">🎯 Task Manager</div>
+            <div class="tool-card">💡 Idea Generator</div>
+        </div>
 
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon">📎</div>
-      <h3>Merge PDFs</h3>
-      <p>Combine multiple PDF files into one organized document effortlessly.</p>
-    </div>
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Discover Amazing Tools
+            </h1>
+            <p class="hero-subtitle">
+                Your ultimate collection of powerful, innovative tools designed to boost productivity and creativity
+            </p>
+            <a href="#most-used" class="explore-btn">
+                Start Exploring
+            </a>
+        </div>
+    </section>
 
-    <div class="feature-card">
-      <div class="feature-icon">✂️</div>
-      <h3>Custom Split</h3>
-      <p>Extract selected pages or split by range from large PDF files.</p>
-    </div>
+    <!-- ========== MOST USED TOOLS SECTION ========== -->
+    <section class="most-used-section" id="most-used">
+        <h2 class="section-title animate-on-scroll">
+            Most Used Tools
+        </h2>
+        
+        <div class="tools-grid">
+            <!-- Tool Card 1 -->
+            <div class="tool-card-main animate-on-scroll">
+                <div class="tool-icon">🎨</div>
+                <h3 class="tool-name">Design Studio Pro</h3>
+                <p class="tool-description">
+                    Create stunning visuals and graphics with our advanced design suite. Perfect for professionals and beginners alike.
+                </p>
+                <div class="tool-stats">
+                    <div class="stat">
+                        <span>⭐</span>
+                        <span>4.9</span>
+                    </div>
+                    <div class="stat">
+                        <span>👥</span>
+                        <span>12.5k users</span>
+                    </div>
+                    <div class="stat">
+                        <span>🔥</span>
+                        <span>Trending</span>
+                    </div>
+                </div>
+            </div>
 
-    <div class="feature-card">
-      <div class="feature-icon">📄</div>
-      <h3>Resume (Summarize)</h3>
-      <p>Auto-generate a concise summary of your PDF content using smart AI.</p>
-    </div>
+            <!-- Tool Card 2 -->
+            <div class="tool-card-main animate-on-scroll">
+                <div class="tool-icon">📊</div>
+                <h3 class="tool-name">Analytics Dashboard</h3>
+                <p class="tool-description">
+                    Powerful data visualization and analytics platform. Transform your data into actionable insights with ease.
+                </p>
+                <div class="tool-stats">
+                    <div class="stat">
+                        <span>⭐</span>
+                        <span>4.8</span>
+                    </div>
+                    <div class="stat">
+                        <span>👥</span>
+                        <span>8.3k users</span>
+                    </div>
+                    <div class="stat">
+                        <span>⚡</span>
+                        <span>Fast</span>
+                    </div>
+                </div>
+            </div>
 
-    <div class="feature-card">
-      <div class="feature-icon">🧪</div>
-      <h3>PDF ➜ QCM/Exam</h3>
-      <p>Convert learning materials into quiz format for exam prep or assessments.</p>
-    </div>
-  </div>
-</section>
+            <!-- Tool Card 3 -->
+            <div class="tool-card-main animate-on-scroll">
+                <div class="tool-icon">🚀</div>
+                <h3 class="tool-name">Deploy Wizard</h3>
+                <p class="tool-description">
+                    Streamline your deployment process with our intelligent automation tools. Deploy faster, deploy smarter.
+                </p>
+                <div class="tool-stats">
+                    <div class="stat">
+                        <span>⭐</span>
+                        <span>4.9</span>
+                    </div>
+                    <div class="stat">
+                        <span>👥</span>
+                        <span>15.2k users</span>
+                    </div>
+                    <div class="stat">
+                        <span>🎯</span>
+                        <span>Popular</span>
+                    </div>
+                </div>
+            </div>
 
-<section class="other-tools" id="other-tools">
-  <h2 class="section-title">Our Other Awesome Tools</h2>
-  <p class="section-subtitle">Explore more utilities created to boost your productivity and creativity.</p>
+            <!-- Tool Card 4 -->
+            <div class="tool-card-main animate-on-scroll">
+                <div class="tool-icon">🔧</div>
+                <h3 class="tool-name">Code Assistant</h3>
+                <p class="tool-description">
+                    AI-powered coding companion that helps you write better code faster. Supports multiple languages and frameworks.
+                </p>
+                <div class="tool-stats">
+                    <div class="stat">
+                        <span>⭐</span>
+                        <span>4.7</span>
+                    </div>
+                    <div class="stat">
+                        <span>👥</span>
+                        <span>22.1k users</span>
+                    </div>
+                    <div class="stat">
+                        <span>🤖</span>
+                        <span>AI-Powered</span>
+                    </div>
+                </div>
+            </div>
 
-  <div class="tools-grid">
-    <div class="tool-card">
-      <div class="tool-icon">🎥</div>
-      <h3>Social Media Downloader</h3>
-      <p>Download videos from Twitter, Instagram, and other platforms effortlessly.</p>
-    </div>
+            <!-- Tool Card 5 -->
+            <div class="tool-card-main animate-on-scroll">
+                <div class="tool-icon">🎯</div>
+                <h3 class="tool-name">Project Manager</h3>
+                <p class="tool-description">
+                    Organize your projects and boost team productivity with our intuitive project management solution.
+                </p>
+                <div class="tool-stats">
+                    <div class="stat">
+                        <span>⭐</span>
+                        <span>4.8</span>
+                    </div>
+                    <div class="stat">
+                        <span>👥</span>
+                        <span>18.7k users</span>
+                    </div>
+                    <div class="stat">
+                        <span>📈</span>
+                        <span>Growing</span>
+                    </div>
+                </div>
+            </div>
 
-    <div class="tool-card">
-      <div class="tool-icon">🎙</div>
-      <h3>Voice Note</h3>
-      <p>Record quick audio notes in your browser and save them for later use.</p>
-    </div>
+            <!-- Tool Card 6 -->
+            <div class="tool-card-main animate-on-scroll">
+                <div class="tool-icon">💡</div>
+                <h3 class="tool-name">Idea Generator</h3>
+                <p class="tool-description">
+                    Spark creativity and innovation with our AI-driven idea generation tool. Perfect for brainstorming sessions.
+                </p>
+                <div class="tool-stats">
+                    <div class="stat">
+                        <span>⭐</span>
+                        <span>4.6</span>
+                    </div>
+                    <div class="stat">
+                        <span>👥</span>
+                        <span>9.4k users</span>
+                    </div>
+                    <div class="stat">
+                        <span>💡</span>
+                        <span>Creative</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="tool-card">
-      <div class="tool-icon">🎨</div>
-      <h3>Image Editing</h3>
-      <p>Crop, filter, and beautify your images with our easy-to-use editor.</p>
-    </div>
-
-    <div class="tool-card">
-      <div class="tool-icon">💬</div>
-      <h3>Encrypted Group Chat</h3>
-      <p>Secure messaging app with end-to-end encryption and real-time sync.</p>
-    </div>
-  </div>
-</section>
-
-
-<section class="contact" id="contact">
-  <h2 class="section-title">Contact Us</h2>
-  <p class="section-subtitle">Have a question or feedback? We'd love to hear from you!</p>
-
-  <form class="contact-form" onsubmit="handleContact(event)">
-    <input type="text" placeholder="Your Name" required />
-    <input type="email" placeholder="Your Email" required />
-    <textarea rows="5" placeholder="Your Message..." required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-
-  <p class="contact-status" id="contact-status"></p>
-</section>
-
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-logo">PDF Toolkit</div>
-    
-    <ul class="footer-links">
-      <li><a href="#tools">Tools</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#">Privacy</a></li>
-      <li><a href="#">Terms</a></li>
-    </ul>
-
-    <p class="footer-contact">📩 contact@pdftoolkit.com</p>
-
-    <p class="footer-copy">© 2025 PDF Toolkit. All rights reserved.</p>
-  </div>
-</footer>
-
-
-  <script>
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('nav-active');
-    });
-  </script>
-
-  <script>
-  function handleContact(e) {
-    e.preventDefault();
-    document.getElementById("contact-status").textContent = "✅ Your message has been sent!";
-    setTimeout(() => {
-      document.querySelector(".contact-form").reset();
-      document.getElementById("contact-status").textContent = "";
-    }, 3000);
-  }
-</script>
-
+    <!-- ========== JAVASCRIPT ========== -->
+     <script src="assets/js/main.js"></script>
+    <script>
+        
+    </script>
 </body>
 </html>
